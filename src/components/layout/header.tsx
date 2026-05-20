@@ -14,17 +14,44 @@ const navigationItems = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("inicio");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+    const sectionIds = navigationItems.map((item) => item.href.replace("#", ""));
+    let animationFrame = 0;
+
+    const updateActiveSection = () => {
+      const activationPoint = window.scrollY + window.innerHeight * 0.35;
+      const currentSection =
+        sectionIds
+          .map((sectionId) => document.getElementById(sectionId))
+          .filter((section): section is HTMLElement => Boolean(section))
+          .filter((section) => section.offsetTop <= activationPoint)
+          .at(-1)?.id ?? "inicio";
+
+      setActiveSection(currentSection);
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const handleScroll = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    const updateHeaderState = () => {
+      setIsScrolled(window.scrollY > 24);
+      handleScroll();
+    };
+
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    window.addEventListener("resize", updateHeaderState);
+    window.addEventListener("hashchange", updateHeaderState);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", updateHeaderState);
+      window.removeEventListener("resize", updateHeaderState);
+      window.removeEventListener("hashchange", updateHeaderState);
     };
   }, []);
 
@@ -46,10 +73,18 @@ export function Header() {
       <nav className="site-header__nav" id="site-header-menu" aria-label="Navegacion principal">
         {navigationItems.map((item) => (
           <a
-            className="site-header__nav-link"
+            aria-current={
+              activeSection === item.href.replace("#", "") ? "page" : undefined
+            }
+            className={`site-header__nav-link${
+              activeSection === item.href.replace("#", "") ? " is-active" : ""
+            }`}
             href={item.href}
             key={item.href}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setActiveSection(item.href.replace("#", ""));
+              setIsMenuOpen(false);
+            }}
           >
             {item.label}
           </a>

@@ -108,7 +108,7 @@ a {
   font-weight: 700;
 }
 
-.site-header__nav-link:first-child,
+.site-header__nav-link.is-active,
 .site-header__nav-link:hover {
   color: var(--color-secondary);
 }
@@ -702,6 +702,10 @@ a {
 
   .site-header__nav-link:hover {
     background: rgba(255, 255, 255, 0.08);
+  }
+
+  .site-header__nav-link.is-active {
+    background: rgba(6, 170, 240, 0.12);
   }
 
   .site-header__menu-button {
