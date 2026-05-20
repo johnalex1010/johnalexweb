@@ -50,11 +50,21 @@ Crear una web clara, rapida y facil de mantener que comunique:
 
 La tipografia definida para el proyecto es Metropolis.
 
-Pendiente por confirmar:
+Los archivos locales de la fuente deben agregarse en:
 
-- Si se usara como fuente local.
-- Si se agregaran archivos `.woff2`.
-- Si se definira una fuente alternativa de sistema mientras se incorporan los archivos finales.
+```txt
+src/app/fonts/metropolis/
+```
+
+Nombres sugeridos:
+
+```txt
+Metropolis-Light.otf
+Metropolis-Regular.otf
+Metropolis-Bold.otf
+```
+
+La fuente se carga con `next/font/local` desde `src/app/layout.tsx` para que Next.js optimice la tipografia.
 
 ## Estructura Minima Planeada
 
