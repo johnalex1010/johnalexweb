@@ -1,40 +1,94 @@
 # John Alex Web
 
-Sitio web profesional de John Alex, desarrollado con Next.js y pensado para desplegarse en Vercel.
+Sitio web profesional de John Alex, desarrollado con Next.js y preparado para desplegarse en Vercel.
 
-El objetivo del proyecto es crear una web moderna, profesional y confiable para vender servicios de:
+El objetivo del proyecto es crear una web moderna, profesional, rápida y confiable para vender servicios de:
 
 - Desarrollo web.
 - WordPress.
 - Posicionamiento SEO.
-- Asesoria y consultoria web.
-- Implementaciones modernas con Next.js, Vercel y posibles integraciones futuras.
+- Asesoría y consultoría web.
+- Aplicaciones web a medida.
+- Optimización técnica para buscadores, asistentes de IA y usuarios.
 
 ## Estado Actual
 
-El proyecto esta en fase inicial de planificacion tecnica.
+El proyecto ya cuenta con una base funcional en Next.js.
 
-Todavia no se ha creado la aplicacion Next.js. Primero se definira la estructura minima necesaria y luego se avanzara al diseno del sitio.
+Incluye:
 
-## Objetivo de la Primera Version
+- Home con hero.
+- Sección de servicios.
+- Sección de proyectos destacados.
+- Página `/proyectos` con listado completo.
+- Plantilla dinámica `/proyectos/[slug]` para detalle de proyecto.
+- Header responsive con menú hamburguesa.
+- Detección de sección activa en el menú.
+- Fuente local Metropolis cargada con `next/font/local`.
+- Iconografía con Lucide Icons.
 
-Crear una web clara, rapida y facil de mantener que comunique:
+## Stack
 
-- Quien soy.
-- Que servicios ofrezco.
-- Que problemas resuelvo.
-- Por que confiar en mi.
-- Como contactarme.
-
-## Stack Previsto
-
-- Next.js.
+- Next.js `16.2.6`.
+- React `19.2.6`.
 - TypeScript.
 - App Router.
-- CSS global y componentes reutilizables.
-- Deploy en Vercel.
+- CSS global.
+- Lucide React `1.16.0`.
+- ESLint.
+- Deploy previsto en Vercel.
+
+## Comandos
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Servidor local:
+
+```bash
+npm run dev
+```
+
+Validar lint:
+
+```bash
+npm run lint
+```
+
+Validar build:
+
+```bash
+npm run build
+```
+
+Ejecutar build en modo producción:
+
+```bash
+npm run start
+```
+
+## Rutas Disponibles
+
+```txt
+/                         Home
+/proyectos                Listado de proyectos
+/proyectos/[slug]         Detalle de proyecto
+```
+
+Ejemplos de detalle:
+
+```txt
+/proyectos/sitio-corporativo-servicios
+/proyectos/dashboard-gestion-comercial
+/proyectos/optimizacion-seo-wordpress
+```
 
 ## Colores Base
+
+La línea gráfica debe respetar estos colores:
 
 ```css
 :root {
@@ -46,17 +100,17 @@ Crear una web clara, rapida y facil de mantener que comunique:
 }
 ```
 
-## Tipografia
+Las imágenes de referencia sirven para estructura visual, no para cambiar la paleta del proyecto.
 
-La tipografia definida para el proyecto es Metropolis.
+## Tipografía
 
-Los archivos locales de la fuente deben agregarse en:
+La tipografía del proyecto es Metropolis y se carga localmente desde:
 
 ```txt
 src/app/fonts/metropolis/
 ```
 
-Nombres sugeridos:
+Archivos actuales:
 
 ```txt
 Metropolis-Light.otf
@@ -64,9 +118,13 @@ Metropolis-Regular.otf
 Metropolis-Bold.otf
 ```
 
-La fuente se carga con `next/font/local` desde `src/app/layout.tsx` para que Next.js optimice la tipografia.
+La configuración está en:
 
-## Estructura Minima Planeada
+```txt
+src/app/layout.tsx
+```
+
+## Estructura Actual
 
 ```txt
 src/
@@ -74,56 +132,177 @@ src/
     layout.tsx
     page.tsx
     globals.css
+    proyectos/
+      page.tsx
+      [slug]/
+        page.tsx
+    fonts/
+      metropolis/
   components/
     layout/
+      header.tsx
+    projects/
+      project-card.tsx
     sections/
-    ui/
+      hero-section.tsx
+      services-section.tsx
+      projects-section.tsx
   data/
-  lib/
+    services.ts
+    projects.ts
 ```
 
-### Por que esta estructura
+## Componentes Principales
 
-`src/app/` contiene las rutas principales de Next.js.
+`Header`
 
-`layout.tsx` define la estructura general del sitio, metadata y elementos comunes.
+- Logo textual `johnalex.`.
+- Navegación principal.
+- CTA `Hablemos`.
+- Menú hamburguesa en responsive.
+- Fondo al hacer scroll.
+- Detección de sección activa.
 
-`page.tsx` representa la pagina de inicio.
+`HeroSection`
 
-`globals.css` guarda estilos globales, variables CSS, base responsive y reglas generales.
+- Propuesta de valor principal.
+- CTAs iniciales.
+- Beneficios rápidos.
+- Visual de apoyo tipo editor/código.
 
-`components/layout/` contendra componentes persistentes como header y footer.
+`ServicesSection`
 
-`components/sections/` contendra secciones grandes de la home, por ejemplo hero, servicios, proceso y contacto.
+- Tres servicios principales:
+  - Sitios web corporativos.
+  - Aplicaciones web a medida.
+  - Optimización y mantenimiento.
+- Iconografía con Lucide.
+- Beneficios por servicio.
+- CTA hacia contacto.
 
-`components/ui/` contendra piezas pequenas reutilizables como botones, contenedores o encabezados de seccion.
+`ProjectsSection`
 
-`data/` permitira separar contenido editable del marcado visual.
+- Muestra proyectos destacados en la home.
+- Enlace hacia `/proyectos`.
+- Usa datos centralizados desde `src/data/projects.ts`.
 
-`lib/` guardara configuracion o utilidades generales del sitio.
+`ProjectCard`
 
-## Plan de Trabajo Inicial
+- Card reutilizable para proyectos.
+- Se usa tanto en home como en la página de proyectos.
+- Enlaza al detalle `/proyectos/[slug]`.
 
-1. Crear la base Next.js en la carpeta actual.
-2. Configurar TypeScript y estructura minima.
-3. Crear estilos globales con colores, tipografia y reglas base.
-4. Crear layout general.
-5. Crear componentes base.
-6. Pasar al diseno visual de la home.
-7. Validar responsive, SEO tecnico y accesibilidad basica.
-8. Preparar deploy en Vercel.
+## Datos
+
+Los textos editables principales están en:
+
+```txt
+src/data/services.ts
+src/data/projects.ts
+```
+
+Esto permite modificar contenido sin tocar la estructura visual de los componentes.
+
+## Imágenes de Proyectos
+
+Tamaños recomendados:
+
+### Cards
+
+```txt
+960 x 600 px
+Ratio: 8:5
+Formato recomendado: .webp
+Peso ideal: menos de 250 KB
+```
+
+Uso:
+
+- Miniaturas de proyectos en la home.
+- Miniaturas en `/proyectos`.
+
+### Hero del detalle
+
+```txt
+1600 x 1000 px
+Ratio: 8:5
+Formato recomendado: .webp
+Peso ideal: menos de 500 KB
+```
+
+Uso:
+
+- Imagen principal en `/proyectos/[slug]`.
+
+### Galería o capturas internas
+
+```txt
+1400 x 900 px
+Ratio aproximado: 14:9
+Formato recomendado: .webp
+```
+
+Uso:
+
+- Capturas secundarias.
+- Pantallas internas.
+- Comparativas o detalles del proyecto.
+
+## SEO / AEO / GEO
+
+El proyecto mantiene:
+
+- Una sola etiqueta `h1` por página.
+- Headings semánticos.
+- Metadata en `layout.tsx` y rutas específicas.
+- Contenido descriptivo en servicios y proyectos.
+- Detalles de proyectos con contexto, problema, solución, resultados y tecnologías.
+- Textos pensados para buscadores, usuarios y asistentes de IA.
+
+## Breakpoints
+
+Los media queries permitidos son:
+
+```css
+@media screen and (max-width: 1250px) {}
+@media screen and (max-width: 1050px) {}
+@media screen and (max-width: 850px) {}
+@media screen and (max-width: 650px) {}
+```
+
+No agregar otros breakpoints sin una justificación clara.
 
 ## Reglas de Trabajo
 
-Este proyecto sigue las reglas definidas en `AGENTS.md`.
+Este proyecto sigue las reglas definidas en:
+
+```txt
+AGENTS.md
+```
 
 Antes de implementar cambios funcionales se debe definir una SPEC proporcional al alcance.
 
+## Validación Actual
+
+Últimas validaciones realizadas:
+
+```bash
+npm run lint
+npm run build
+npm audit --audit-level=moderate
+```
+
+Resultado:
+
+- Lint correcto.
+- Build correcto.
+- Auditoría sin vulnerabilidades moderadas o superiores.
+
 ## Pendientes
 
-- Crear proyecto Next.js.
-- Confirmar archivos de fuente Metropolis.
-- Definir contenido final de la home.
-- Definir medios visuales o imagenes.
-- Definir mecanismo de contacto.
-- Preparar configuracion de Vercel.
+- Agregar imágenes reales de proyectos.
+- Crear sección de tecnologías.
+- Crear sección sobre mí.
+- Crear sección de contacto.
+- Definir mecanismo real de contacto.
+- Preparar configuración final para Vercel.
