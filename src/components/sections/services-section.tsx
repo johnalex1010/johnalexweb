@@ -1,4 +1,5 @@
 import { CheckCircle2, Code2, Gauge, Monitor, Rocket } from "lucide-react";
+import Link from "next/link";
 import type { ComponentType } from "react";
 import { services, type ServiceIcon } from "@/data/services";
 
@@ -51,7 +52,7 @@ export function ServicesSection() {
           })}
         </div>
 
-        <a className="services-section__cta" href="#contacto">
+        <Link className="services-section__cta" href="/#contacto">
           <span className="services-section__cta-icon" aria-hidden="true">
             <Rocket className="services-section__cta-icon-svg" />
           </span>
@@ -62,7 +63,7 @@ export function ServicesSection() {
           <span className="services-section__cta-arrow" aria-hidden="true">
             &rarr;
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   );

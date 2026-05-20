@@ -1,23 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navigationItems = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Tecnologias", href: "#tecnologias" },
-  { label: "Sobre mi", href: "#sobre-mi" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio", sectionId: "inicio" },
+  { label: "Servicios", href: "/#servicios", sectionId: "servicios" },
+  { label: "Proyectos", href: "/#proyectos", sectionId: "proyectos" },
+  { label: "Tecnologias", href: "/#tecnologias", sectionId: "tecnologias" },
+  { label: "Sobre mi", href: "/#sobre-mi", sectionId: "sobre-mi" },
+  { label: "Contacto", href: "/#contacto", sectionId: "contacto" },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
+  const currentSection = pathname === "/proyectos" ? "proyectos" : activeSection;
 
   useEffect(() => {
-    const sectionIds = navigationItems.map((item) => item.href.replace("#", ""));
+    if (pathname === "/proyectos") {
+      return;
+    }
+
+    const sectionIds = navigationItems.map((item) => item.sectionId);
     let animationFrame = 0;
 
     const updateActiveSection = () => {
@@ -53,7 +61,7 @@ export function Header() {
       window.removeEventListener("resize", updateHeaderState);
       window.removeEventListener("hashchange", updateHeaderState);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <header
@@ -62,39 +70,39 @@ export function Header() {
       }`}
       aria-label="Encabezado principal"
     >
-      <a className="site-header__brand" href="#inicio" aria-label="John Alex inicio">
+      <Link className="site-header__brand" href="/#inicio" aria-label="John Alex inicio">
         <span className="site-header__brand-name">
           <span className="site-header__brand-primary">john</span>
           <span className="site-header__brand-secondary">alex</span>
           <span className="site-header__brand-dot">.</span>
         </span>
-      </a>
+      </Link>
 
       <nav className="site-header__nav" id="site-header-menu" aria-label="Navegacion principal">
         {navigationItems.map((item) => (
-          <a
+          <Link
             aria-current={
-              activeSection === item.href.replace("#", "") ? "page" : undefined
+              currentSection === item.sectionId ? "page" : undefined
             }
             className={`site-header__nav-link${
-              activeSection === item.href.replace("#", "") ? " is-active" : ""
+              currentSection === item.sectionId ? " is-active" : ""
             }`}
             href={item.href}
             key={item.href}
             onClick={() => {
-              setActiveSection(item.href.replace("#", ""));
+              setActiveSection(item.sectionId);
               setIsMenuOpen(false);
             }}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
 
-      <a className="site-header__cta" href="#contacto">
+      <Link className="site-header__cta" href="/#contacto">
         Hablemos
         <span aria-hidden="true">&rarr;</span>
-      </a>
+      </Link>
 
       <button
         className="site-header__menu-button"
