@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   title: "JohnAlexWeb | Desarrollo web, SEO y consultoria digital",
   description:
     "Desarrollo sitios web modernos, rapidos y optimizados para convertir visitantes en clientes.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

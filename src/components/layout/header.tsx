@@ -8,7 +8,7 @@ const navigationItems = [
   { label: "Inicio", href: "/#inicio", sectionId: "inicio" },
   { label: "Servicios", href: "/#servicios", sectionId: "servicios" },
   { label: "Proyectos", href: "/#proyectos", sectionId: "proyectos" },
-  { label: "Tecnologias", href: "/#tecnologias", sectionId: "tecnologias" },
+  { label: "Proceso", href: "/#proceso", sectionId: "proceso" },
   { label: "Sobre mi", href: "/#sobre-mi", sectionId: "sobre-mi" },
   { label: "Contacto", href: "/#contacto", sectionId: "contacto" },
 ];
