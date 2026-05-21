@@ -18,14 +18,14 @@ const footerNavigation = [
   { label: "Proyectos", href: "/#proyectos" },
   { label: "Proceso", href: "/#proceso" },
   { label: "Sobre mí", href: "/sobre-mi" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 const footerServices = [
   { label: "Sitios web corporativos", href: "/#servicios" },
   { label: "Aplicaciones web a medida", href: "/#servicios" },
   { label: "Optimización y mantenimiento", href: "/#servicios" },
-  { label: "Consultoría web y SEO", href: "/#contacto" },
+  { label: "Consultoría web y SEO", href: "/contacto" },
 ];
 
 const footerTechnologies = [
@@ -62,7 +62,7 @@ export function Footer() {
               para vender mejor.
             </p>
           </div>
-          <Link className="site-footer__cta-link" href="/#contacto">
+          <Link className="site-footer__cta-link" href="/contacto">
             <MessageCircle aria-hidden="true" />
             Hablemos ahora
             <ArrowRight aria-hidden="true" />
@@ -142,7 +142,7 @@ export function Footer() {
                 );
               })}
             </div>
-            <Link className="site-footer__contact-link" href="/#contacto">
+            <Link className="site-footer__contact-link" href="/contacto">
               <Mail aria-hidden="true" />
               Contacto directo
             </Link>

@@ -10,7 +10,7 @@ const navigationItems = [
   { label: "Proyectos", href: "/#proyectos", sectionId: "proyectos" },
   { label: "Proceso", href: "/#proceso", sectionId: "proceso" },
   { label: "Sobre mí", href: "/sobre-mi", sectionId: "sobre-mi" },
-  { label: "Contacto", href: "/#contacto", sectionId: "contacto" },
+  { label: "Contacto", href: "/contacto", sectionId: "contacto" },
 ];
 
 export function Header({ variant = "default" }: { variant?: "default" | "light" }) {
@@ -21,10 +21,16 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
     ? "proyectos"
     : pathname.startsWith("/sobre-mi")
       ? "sobre-mi"
+      : pathname.startsWith("/contacto")
+        ? "contacto"
       : activeSection;
 
   useEffect(() => {
-    if (pathname.startsWith("/proyectos") || pathname.startsWith("/sobre-mi")) {
+    if (
+      pathname.startsWith("/proyectos") ||
+      pathname.startsWith("/sobre-mi") ||
+      pathname.startsWith("/contacto")
+    ) {
       return;
     }
 
@@ -104,7 +110,7 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
         ))}
       </nav>
 
-      <Link className="site-header__cta" href="/#contacto">
+      <Link className="site-header__cta" href="/contacto">
         Hablemos
         <span aria-hidden="true">&rarr;</span>
       </Link>

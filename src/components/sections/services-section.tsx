@@ -52,7 +52,7 @@ export function ServicesSection() {
           })}
         </div>
 
-        <Link className="services-section__cta" href="/#contacto">
+        <Link className="services-section__cta" href="/contacto">
           <span className="services-section__cta-icon" aria-hidden="true">
             <Rocket className="services-section__cta-icon-svg" />
           </span>

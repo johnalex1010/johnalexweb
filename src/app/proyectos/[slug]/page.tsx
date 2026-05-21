@@ -249,7 +249,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                   <strong>¿Tienes un proyecto similar en mente?</strong>
                   <p>Hablemos sobre cómo puedo ayudarte a hacerlo realidad.</p>
                 </div>
-                <Link href="/#contacto">Hablemos ahora</Link>
+                <Link href="/contacto">Hablemos ahora</Link>
               </div>
             </div>
           </section>

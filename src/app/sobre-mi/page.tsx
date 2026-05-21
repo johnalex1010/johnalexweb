@@ -92,7 +92,7 @@ export default function AboutPage() {
                 claros, rápidos y orientados a resultados.
               </p>
               <div className="about-hero__actions" aria-label="Acciones principales">
-                <Link className="about-page__button about-page__button--primary" href="/#contacto">
+                <Link className="about-page__button about-page__button--primary" href="/contacto">
                   Hablemos de tu proyecto
                   <MessageCircle aria-hidden="true" />
                 </Link>

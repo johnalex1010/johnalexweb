@@ -33,7 +33,7 @@ export function HeroSection() {
           </p>
 
           <div className="hero-section__actions" aria-label="Acciones principales">
-            <a className="button button--primary" href="#contacto">
+            <a className="button button--primary" href="/contacto">
               Quiero mi sitio web
             </a>
             <a className="button button--secondary" href="#proyectos">
@@ -77,7 +77,7 @@ export function HeroSection() {
         que venden mejor</h1>
       <p>Desarrollo web moderno,
         rapido y optimizado.</p>
-      <a href="#contacto">Hablemos</a>
+      <a href="/contacto">Hablemos</a>
     </header>
   </body>
 </html>`}</code>
