@@ -66,21 +66,104 @@ export function HeroSection() {
 
             <div className="hero-visual__workspace">
               <pre className="hero-visual__code" aria-hidden="true">
-                <code>{`<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <title>Tu negocio</title>
-  </head>
-  <body>
-    <header class="hero">
-      <h1>Soluciones digitales
-        que venden mejor</h1>
-      <p>Desarrollo web moderno,
-        rapido y optimizado.</p>
-      <a href="/contacto">Hablemos</a>
-    </header>
-  </body>
-</html>`}</code>
+                <code>
+                  <span className="hero-visual__code-line">
+                    <span className="code-token code-token--punctuation">&lt;!</span>
+                    <span className="code-token code-token--doctype">DOCTYPE</span> html
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">html</span>{" "}
+                    <span className="code-token code-token--attr">lang</span>
+                    <span className="code-token code-token--punctuation">=</span>
+                    <span className="code-token code-token--string">&quot;es&quot;</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">head</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-2">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">title</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                    <span className="code-token code-token--text">Tu negocio</span>
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">title</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">head</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">body</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-2">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">header</span>{" "}
+                    <span className="code-token code-token--attr">class</span>
+                    <span className="code-token code-token--punctuation">=</span>
+                    <span className="code-token code-token--string">&quot;hero&quot;</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-3">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">h1</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                    <span className="code-token code-token--text">Soluciones digitales</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-4">
+                    <span className="code-token code-token--text">que venden mejor</span>
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">h1</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-3">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">p</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                    <span className="code-token code-token--text">Desarrollo web moderno,</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-4">
+                    <span className="code-token code-token--text">rapido y optimizado.</span>
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">p</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-3">
+                    <span className="code-token code-token--punctuation">&lt;</span>
+                    <span className="code-token code-token--tag">a</span>{" "}
+                    <span className="code-token code-token--attr">href</span>
+                    <span className="code-token code-token--punctuation">=</span>
+                    <span className="code-token code-token--string">&quot;/contacto&quot;</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                    <span className="code-token code-token--text">Hablemos</span>
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">a</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-2">
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">header</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">body</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                  <span className="hero-visual__code-line">
+                    <span className="code-token code-token--punctuation">&lt;/</span>
+                    <span className="code-token code-token--tag">html</span>
+                    <span className="code-token code-token--punctuation">&gt;</span>
+                  </span>
+                </code>
               </pre>
 
               <aside className="hero-visual__files" aria-hidden="true">

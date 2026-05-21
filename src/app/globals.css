@@ -407,10 +407,61 @@ a {
   margin: 0;
   padding: 32px 34px;
   overflow: hidden;
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(235, 245, 255, 0.9);
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 0.92rem;
   line-height: 1.75;
+}
+
+.hero-visual__code code {
+  display: grid;
+  gap: 1px;
+}
+
+.hero-visual__code-line {
+  display: block;
+  min-height: 1.75em;
+  white-space: nowrap;
+}
+
+.hero-visual__code-line--indent-1 {
+  padding-left: 18px;
+}
+
+.hero-visual__code-line--indent-2 {
+  padding-left: 36px;
+}
+
+.hero-visual__code-line--indent-3 {
+  padding-left: 54px;
+}
+
+.hero-visual__code-line--indent-4 {
+  padding-left: 72px;
+}
+
+.code-token--tag {
+  color: #06aaf0;
+}
+
+.code-token--attr {
+  color: #ffad3d;
+}
+
+.code-token--string {
+  color: #66e7b4;
+}
+
+.code-token--doctype {
+  color: #9fc8ff;
+}
+
+.code-token--punctuation {
+  color: rgba(235, 245, 255, 0.72);
+}
+
+.code-token--text {
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .hero-visual__files {
