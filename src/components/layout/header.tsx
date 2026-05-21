@@ -16,7 +16,6 @@ const navigationItems = [
 export function Header({ variant = "default" }: { variant?: "default" | "light" }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
   const currentSection = pathname.startsWith("/proyectos") ? "proyectos" : activeSection;
 
@@ -66,8 +65,8 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
   return (
     <header
       className={`site-header${isScrolled ? " is-scrolled" : ""}${
-        isMenuOpen ? " is-open" : ""
-      }${variant === "light" ? " site-header--light" : ""}`}
+        variant === "light" ? " site-header--light" : ""
+      }`}
       aria-label="Encabezado principal"
     >
       <Link className="site-header__brand" href="/#inicio" aria-label="John Alex inicio">
@@ -78,7 +77,10 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
         </span>
       </Link>
 
-      <nav className="site-header__nav" id="site-header-menu" aria-label="Navegacion principal">
+      <nav
+        className="site-header__nav site-header__nav--desktop"
+        aria-label="Navegacion principal"
+      >
         {navigationItems.map((item) => (
           <Link
             aria-current={
@@ -91,7 +93,6 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
             key={item.href}
             onClick={() => {
               setActiveSection(item.sectionId);
-              setIsMenuOpen(false);
             }}
           >
             {item.label}
@@ -104,18 +105,39 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
         <span aria-hidden="true">&rarr;</span>
       </Link>
 
-      <button
-        className="site-header__menu-button"
-        type="button"
-        aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
-        aria-expanded={isMenuOpen}
-        aria-controls="site-header-menu"
-        onClick={() => setIsMenuOpen((currentState) => !currentState)}
-      >
-        <span aria-hidden="true" />
-        <span aria-hidden="true" />
-        <span aria-hidden="true" />
-      </button>
+      <details className="site-header__mobile-menu">
+        <summary
+          className="site-header__menu-button"
+          aria-label="Abrir menu"
+          aria-controls="site-header-mobile-menu"
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </summary>
+
+        <nav
+          className="site-header__nav site-header__mobile-nav"
+          id="site-header-mobile-menu"
+          aria-label="Navegacion principal movil"
+        >
+          {navigationItems.map((item) => (
+            <Link
+              aria-current={currentSection === item.sectionId ? "page" : undefined}
+              className={`site-header__nav-link${
+                currentSection === item.sectionId ? " is-active" : ""
+              }`}
+              href={item.href}
+              key={item.href}
+              onClick={() => {
+                setActiveSection(item.sectionId);
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </details>
     </header>
   );
 }

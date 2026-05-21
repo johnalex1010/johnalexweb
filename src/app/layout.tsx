@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 
 const metropolis = localFont({
@@ -41,7 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${metropolis.variable} ${metropolis.className}`}>{children}</body>
+      <body className={`${metropolis.variable} ${metropolis.className}`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
