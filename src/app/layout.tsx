@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Footer } from "@/components/layout/footer";
+import { JsonLd } from "@/components/seo/json-ld";
+import { professionalServiceSchema, websiteSchema } from "@/lib/seo";
+import { absoluteUrl, defaultDescription, siteKeywords, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const metropolis = localFont({
@@ -26,9 +29,29 @@ const metropolis = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "JohnAlexWeb | Desarrollo web, SEO y consultoria digital",
-  description:
-    "Desarrollo sitios web modernos, rapidos y optimizados para convertir visitantes en clientes.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "JohnAlexWeb | Desarrollo web, SEO y consultoría digital",
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
+  keywords: siteKeywords,
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
+  openGraph: {
+    title: "JohnAlexWeb | Desarrollo web, SEO y consultoría digital",
+    description: defaultDescription,
+    url: absoluteUrl("/"),
+    siteName,
+    locale: "es_CO",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "JohnAlexWeb | Desarrollo web, SEO y consultoría digital",
+    description: defaultDescription,
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -43,6 +66,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${metropolis.variable} ${metropolis.className}`}>
+        <JsonLd data={[websiteSchema, professionalServiceSchema]} />
         {children}
         <Footer />
       </body>

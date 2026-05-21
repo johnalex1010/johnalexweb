@@ -13,6 +13,13 @@ import {
   Zap,
 } from "lucide-react";
 import { Header } from "@/components/layout/header";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createBreadcrumbSchema } from "@/lib/seo";
+import { absoluteUrl, siteName } from "@/lib/site";
+
+const pageTitle = "Contacto";
+const pageDescription =
+  "Contacta a John Alex para crear tu sitio web, mejorar tu posicionamiento SEO, recibir asesoría web o planificar una solución digital a medida.";
 
 const benefits = [
   {
@@ -40,14 +47,46 @@ const contactItems = [
 ];
 
 export const metadata: Metadata = {
-  title: "Contacto | JohnAlexWeb",
-  description:
-    "Contacta a John Alex para crear tu sitio web, mejorar tu posicionamiento SEO, recibir asesoría web o planificar una solución digital a medida.",
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: absoluteUrl("/contacto"),
+  },
+  openGraph: {
+    title: `${pageTitle} | ${siteName}`,
+    description: pageDescription,
+    url: absoluteUrl("/contacto"),
+    siteName,
+    locale: "es_CO",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: `${pageTitle} | ${siteName}`,
+    description: pageDescription,
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "@id": `${absoluteUrl("/contacto")}#contact-page`,
+            url: absoluteUrl("/contacto"),
+            name: `${pageTitle} | ${siteName}`,
+            description: pageDescription,
+            inLanguage: "es",
+          },
+          createBreadcrumbSchema([
+            { name: "Inicio", path: "/" },
+            { name: "Contacto", path: "/contacto" },
+          ]),
+        ]}
+      />
       <Header variant="light" />
       <main className="contact-page">
         <section className="contact-section" aria-labelledby="contact-title">

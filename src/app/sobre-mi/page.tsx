@@ -17,6 +17,13 @@ import {
   Target,
 } from "lucide-react";
 import { Header } from "@/components/layout/header";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createBreadcrumbSchema, createWebPageSchema, personSchema } from "@/lib/seo";
+import { absoluteUrl, siteName } from "@/lib/site";
+
+const pageTitle = "Sobre mí";
+const pageDescription =
+  "Conoce a John Alex, desarrollador web especializado en sitios modernos, WordPress, SEO, consultoría web, Next.js, Vercel y soluciones digitales orientadas a resultados.";
 
 const stats = [
   { label: "Años de experiencia", value: "5+", icon: BriefcaseBusiness },
@@ -68,14 +75,43 @@ const technologies = [
 ];
 
 export const metadata: Metadata = {
-  title: "Sobre mí | JohnAlexWeb",
-  description:
-    "Conoce a John Alex, desarrollador web especializado en sitios modernos, WordPress, SEO, consultoría web, Next.js, Vercel y soluciones digitales orientadas a resultados.",
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: absoluteUrl("/sobre-mi"),
+  },
+  openGraph: {
+    title: `${pageTitle} | ${siteName}`,
+    description: pageDescription,
+    url: absoluteUrl("/sobre-mi"),
+    siteName,
+    locale: "es_CO",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary",
+    title: `${pageTitle} | ${siteName}`,
+    description: pageDescription,
+  },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          personSchema,
+          createWebPageSchema({
+            path: "/sobre-mi",
+            name: `${pageTitle} | ${siteName}`,
+            description: pageDescription,
+          }),
+          createBreadcrumbSchema([
+            { name: "Inicio", path: "/" },
+            { name: "Sobre mí", path: "/sobre-mi" },
+          ]),
+        ]}
+      />
       <Header variant="light" />
       <main className="about-page">
         <section className="about-hero" aria-labelledby="about-title">

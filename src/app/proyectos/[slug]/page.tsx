@@ -23,7 +23,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Header } from "@/components/layout/header";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getProjectBySlug, imageRecommendations, projects } from "@/data/projects";
+import { createBreadcrumbSchema } from "@/lib/seo";
+import { absoluteUrl, siteName } from "@/lib/site";
 
 type ProjectDetailPageProps = {
   params: Promise<{
@@ -103,8 +106,24 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} | JohnAlexWeb`,
+    title: project.title,
     description: project.summary,
+    alternates: {
+      canonical: absoluteUrl(`/proyectos/${project.slug}`),
+    },
+    openGraph: {
+      title: `${project.title} | ${siteName}`,
+      description: project.summary,
+      url: absoluteUrl(`/proyectos/${project.slug}`),
+      siteName,
+      locale: "es_CO",
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${project.title} | ${siteName}`,
+      description: project.summary,
+    },
   };
 }
 
@@ -127,6 +146,31 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
   return (
     <>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "@id": `${absoluteUrl(`/proyectos/${project.slug}`)}#creative-work`,
+            url: absoluteUrl(`/proyectos/${project.slug}`),
+            name: project.title,
+            description: project.summary,
+            inLanguage: "es",
+            genre: project.category,
+            about: project.businessType,
+            dateCreated: project.date,
+            creator: {
+              "@id": `${absoluteUrl("/")}#person`,
+            },
+            keywords: project.technologies,
+          },
+          createBreadcrumbSchema([
+            { name: "Inicio", path: "/" },
+            { name: "Proyectos", path: "/proyectos" },
+            { name: project.title, path: `/proyectos/${project.slug}` },
+          ]),
+        ]}
+      />
       <Header variant="light" />
       <main className="project-detail">
         <article className="project-detail__shell">

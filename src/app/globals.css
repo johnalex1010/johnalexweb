@@ -920,6 +920,91 @@ a {
   line-height: 1.7;
 }
 
+.faq-section {
+  padding: 108px 20px 96px;
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
+.faq-section__container {
+  width: min(100%, var(--container-width));
+  margin: 0 auto;
+}
+
+.faq-section__heading {
+  max-width: 780px;
+  margin-bottom: 40px;
+}
+
+.faq-section__eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-secondary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.faq-section__title {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.12;
+}
+
+.faq-section__description {
+  max-width: 700px;
+  margin: 18px 0 0;
+  color: rgba(38, 50, 56, 0.74);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.faq-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.faq-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 18px;
+  padding: 28px;
+  border: 1px solid rgba(11, 37, 91, 0.1);
+  border-radius: 10px;
+  background: var(--color-tertiary);
+}
+
+.faq-card__icon {
+  display: inline-flex;
+  width: 46px;
+  height: 46px;
+  grid-row: span 2;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(6, 170, 240, 0.1);
+  color: var(--color-secondary);
+}
+
+.faq-card__icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.faq-card h3 {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.faq-card p {
+  margin: 0;
+  color: rgba(38, 50, 56, 0.76);
+  line-height: 1.7;
+}
+
 .project-card {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -2777,6 +2862,10 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .faq-section__grid {
+    grid-template-columns: 1fr;
+  }
+
   .site-footer__cta-grid {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -2903,6 +2992,10 @@ a {
   }
 
   .process-section {
+    padding: 86px 20px;
+  }
+
+  .faq-section {
     padding: 86px 20px;
   }
 
@@ -3140,6 +3233,31 @@ a {
 
   .process-section {
     padding: 72px 14px;
+  }
+
+  .faq-section {
+    padding: 72px 14px;
+  }
+
+  .faq-section__heading {
+    margin-bottom: 28px;
+  }
+
+  .faq-section__title {
+    font-size: 2rem;
+  }
+
+  .faq-section__description {
+    font-size: 1rem;
+  }
+
+  .faq-card {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .faq-card__icon {
+    grid-row: auto;
   }
 
   .site-footer__cta-grid {

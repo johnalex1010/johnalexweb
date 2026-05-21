@@ -1,17 +1,52 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/header";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ProjectCard } from "@/components/projects/project-card";
 import { projects } from "@/data/projects";
+import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
+import { absoluteUrl, siteName } from "@/lib/site";
+
+const pageTitle = "Proyectos web";
+const pageDescription =
+  "Explora proyectos de desarrollo web, aplicaciones a medida y optimización SEO realizados con enfoque técnico, comercial y estratégico.";
 
 export const metadata: Metadata = {
-  title: "Proyectos web | JohnAlexWeb",
-  description:
-    "Explora proyectos de desarrollo web, aplicaciones a medida y optimización SEO realizados con enfoque técnico, comercial y estratégico.",
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: absoluteUrl("/proyectos"),
+  },
+  openGraph: {
+    title: `${pageTitle} | ${siteName}`,
+    description: pageDescription,
+    url: absoluteUrl("/proyectos"),
+    siteName,
+    locale: "es_CO",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: `${pageTitle} | ${siteName}`,
+    description: pageDescription,
+  },
 };
 
 export default function ProjectsPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          createWebPageSchema({
+            path: "/proyectos",
+            name: `${pageTitle} | ${siteName}`,
+            description: pageDescription,
+          }),
+          createBreadcrumbSchema([
+            { name: "Inicio", path: "/" },
+            { name: "Proyectos", path: "/proyectos" },
+          ]),
+        ]}
+      />
       <Header />
       <main className="projects-page">
         <section className="projects-page__hero" aria-labelledby="projects-page-title">
