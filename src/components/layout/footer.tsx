@@ -17,7 +17,7 @@ const footerNavigation = [
   { label: "Servicios", href: "/#servicios" },
   { label: "Proyectos", href: "/#proyectos" },
   { label: "Proceso", href: "/#proceso" },
-  { label: "Sobre mí", href: "/#sobre-mi" },
+  { label: "Sobre mí", href: "/sobre-mi" },
   { label: "Contacto", href: "/#contacto" },
 ];
 

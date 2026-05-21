@@ -9,7 +9,7 @@ const navigationItems = [
   { label: "Servicios", href: "/#servicios", sectionId: "servicios" },
   { label: "Proyectos", href: "/#proyectos", sectionId: "proyectos" },
   { label: "Proceso", href: "/#proceso", sectionId: "proceso" },
-  { label: "Sobre mi", href: "/#sobre-mi", sectionId: "sobre-mi" },
+  { label: "Sobre mí", href: "/sobre-mi", sectionId: "sobre-mi" },
   { label: "Contacto", href: "/#contacto", sectionId: "contacto" },
 ];
 
@@ -17,10 +17,14 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
-  const currentSection = pathname.startsWith("/proyectos") ? "proyectos" : activeSection;
+  const currentSection = pathname.startsWith("/proyectos")
+    ? "proyectos"
+    : pathname.startsWith("/sobre-mi")
+      ? "sobre-mi"
+      : activeSection;
 
   useEffect(() => {
-    if (pathname.startsWith("/proyectos")) {
+    if (pathname.startsWith("/proyectos") || pathname.startsWith("/sobre-mi")) {
       return;
     }
 
