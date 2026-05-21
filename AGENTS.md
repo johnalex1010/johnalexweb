@@ -92,6 +92,12 @@ No crear carpetas vacias si todavia no existe una necesidad real. La estructura 
 - Evitar `!important` salvo caso critico documentado.
 - No usar estilos inline salvo necesidad puntual y justificada.
 
+### Iconografia
+
+- Usar iconos reales de Lucide cuando una interfaz requiera iconografia visual.
+- No usar siglas o texto decorativo como reemplazo de iconos, salvo que la sigla sea contenido real del servicio o tecnologia.
+- Mantener siempre texto visible junto al icono cuando el contenido aporte contexto SEO / GEO / AEO.
+
 ### Naming General
 
 | Tipo | Convencion |

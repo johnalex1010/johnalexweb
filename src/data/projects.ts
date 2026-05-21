@@ -36,6 +36,12 @@ export const projects: Array<{
   outcomes: string[];
   technologies: string[];
   imageAlt: string;
+  date: string;
+  duration: string;
+  client: string;
+  liveUrl: string;
+  repositoryUrl: string;
+  features: string[];
 }> = [
   {
     slug: "sitio-corporativo-servicios",
@@ -60,6 +66,19 @@ export const projects: Array<{
     ],
     technologies: ["Next.js", "HTML semántico", "CSS responsive", "SEO técnico"],
     imageAlt: "Vista previa de sitio corporativo profesional para empresa de servicios",
+    date: "Abril 2026",
+    duration: "4 semanas",
+    client: "Empresa de servicios",
+    liveUrl: "johnalexweb.com",
+    repositoryUrl: "github.com/johnalexweb/sitio-corporativo",
+    features: [
+      "Diseño moderno y profesional",
+      "Totalmente responsive",
+      "Optimizado para SEO",
+      "Rendimiento optimizado",
+      "Formularios de contacto",
+      "Estructura preparada para analítica",
+    ],
   },
   {
     slug: "dashboard-gestion-comercial",
@@ -84,6 +103,19 @@ export const projects: Array<{
     ],
     technologies: ["Next.js", "React", "Componentes reutilizables", "Diseño responsive"],
     imageAlt: "Dashboard web para gestión comercial con métricas y paneles de información",
+    date: "Mayo 2026",
+    duration: "6 semanas",
+    client: "Equipo comercial",
+    liveUrl: "dashboard.johnalexweb.com",
+    repositoryUrl: "github.com/johnalexweb/dashboard-comercial",
+    features: [
+      "Panel de métricas clave",
+      "Componentes reutilizables",
+      "Interfaz responsive",
+      "Arquitectura escalable",
+      "Estados visuales claros",
+      "Base para integraciones",
+    ],
   },
   {
     slug: "optimizacion-seo-wordpress",
@@ -108,6 +140,19 @@ export const projects: Array<{
     ],
     technologies: ["WordPress", "Yoast SEO", "Core Web Vitals", "SEO técnico"],
     imageAlt: "Optimización SEO técnica para sitio WordPress orientada a visibilidad orgánica",
+    date: "Marzo 2026",
+    duration: "3 semanas",
+    client: "Sitio WordPress",
+    liveUrl: "seo.johnalexweb.com",
+    repositoryUrl: "github.com/johnalexweb/seo-wordpress",
+    features: [
+      "Auditoría técnica SEO",
+      "Mejora de estructura semántica",
+      "Optimización Core Web Vitals",
+      "Revisión de indexabilidad",
+      "Compatibilidad con Yoast",
+      "Recomendaciones AEO y GEO",
+    ],
   },
   {
     slug: "landing-page-campana-digital",
@@ -132,6 +177,19 @@ export const projects: Array<{
     ],
     technologies: ["Next.js", "SEO on-page", "Copywriting web", "Responsive design"],
     imageAlt: "Landing page para campaña digital con enfoque en captación de leads",
+    date: "Febrero 2026",
+    duration: "2 semanas",
+    client: "Campaña digital",
+    liveUrl: "landing.johnalexweb.com",
+    repositoryUrl: "github.com/johnalexweb/landing-campana",
+    features: [
+      "Mensaje comercial directo",
+      "CTA visibles",
+      "Secciones escaneables",
+      "Preguntas frecuentes",
+      "Diseño responsive",
+      "Base para medición de conversiones",
+    ],
   },
   {
     slug: "auditoria-tecnica-seo",
@@ -156,6 +214,19 @@ export const projects: Array<{
     ],
     technologies: ["SEO técnico", "Core Web Vitals", "Arquitectura web", "Auditoría UX"],
     imageAlt: "Auditoría técnica SEO con recomendaciones para mejorar visibilidad y rendimiento",
+    date: "Enero 2026",
+    duration: "2 semanas",
+    client: "Consultoría web",
+    liveUrl: "audit.johnalexweb.com",
+    repositoryUrl: "github.com/johnalexweb/auditoria-seo",
+    features: [
+      "Revisión de indexabilidad",
+      "Análisis de rendimiento",
+      "Mapa de prioridades",
+      "Revisión de contenido crítico",
+      "Arquitectura de headings",
+      "Recomendaciones SEO, AEO y GEO",
+    ],
   },
 ];
 

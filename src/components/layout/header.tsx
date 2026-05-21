@@ -13,15 +13,15 @@ const navigationItems = [
   { label: "Contacto", href: "/#contacto", sectionId: "contacto" },
 ];
 
-export function Header() {
+export function Header({ variant = "default" }: { variant?: "default" | "light" }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
-  const currentSection = pathname === "/proyectos" ? "proyectos" : activeSection;
+  const currentSection = pathname.startsWith("/proyectos") ? "proyectos" : activeSection;
 
   useEffect(() => {
-    if (pathname === "/proyectos") {
+    if (pathname.startsWith("/proyectos")) {
       return;
     }
 
@@ -67,7 +67,7 @@ export function Header() {
     <header
       className={`site-header${isScrolled ? " is-scrolled" : ""}${
         isMenuOpen ? " is-open" : ""
-      }`}
+      }${variant === "light" ? " site-header--light" : ""}`}
       aria-label="Encabezado principal"
     >
       <Link className="site-header__brand" href="/#inicio" aria-label="John Alex inicio">
