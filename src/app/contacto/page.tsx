@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
 import {
   Clock,
-  LockKeyhole,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
   Send,
   ShieldCheck,
-  Tag,
-  User,
   Zap,
 } from "lucide-react";
+import { ContactWhatsappForm } from "@/components/contact/contact-whatsapp-form";
 import { Header } from "@/components/layout/header";
 import { JsonLd } from "@/components/seo/json-ld";
 import { createBreadcrumbSchema } from "@/lib/seo";
@@ -34,14 +32,15 @@ const benefits = [
   },
   {
     title: "Información segura",
-    description: "Tus datos están protegidos y no serán compartidos.",
-    icon: LockKeyhole,
+    description: "Tus datos se usarán únicamente para iniciar la conversación.",
+    icon: MessageCircle,
   },
 ];
 
 const contactItems = [
   { label: "Email", value: "hola@johnalexweb.com", icon: Mail },
   { label: "Teléfono", value: "+57 300 123 4567", icon: Phone },
+  { label: "WhatsApp", value: "+57 321 454 8919", icon: MessageCircle },
   { label: "Ubicación", value: "Colombia", icon: MapPin },
   { label: "Horario", value: "Lun - Vie: 9:00 AM - 6:00 PM", icon: Clock },
 ];
@@ -80,6 +79,13 @@ export default function ContactPage() {
             name: `${pageTitle} | ${siteName}`,
             description: pageDescription,
             inLanguage: "es",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "WhatsApp",
+              telephone: "+573214548919",
+              areaServed: "CO",
+              availableLanguage: "es",
+            },
           },
           createBreadcrumbSchema([
             { name: "Inicio", path: "/" },
@@ -160,74 +166,11 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <h2 id="contact-form-title">Envíame un mensaje</h2>
-                  <p>Completa el formulario y me pondré en contacto contigo.</p>
+                  <p>Completa el formulario y me pondré en contacto contigo por WhatsApp.</p>
                 </div>
               </div>
 
-              <form className="contact-form" aria-describedby="contact-form-privacy">
-                <div className="contact-form__row">
-                  <label className="contact-form__field">
-                    <span>
-                      <User aria-hidden="true" />
-                      Nombre completo
-                    </span>
-                    <input
-                      autoComplete="name"
-                      name="name"
-                      placeholder="Tu nombre"
-                      type="text"
-                    />
-                  </label>
-
-                  <label className="contact-form__field">
-                    <span>
-                      <Mail aria-hidden="true" />
-                      Email
-                    </span>
-                    <input
-                      autoComplete="email"
-                      name="email"
-                      placeholder="tu@email.com"
-                      type="email"
-                    />
-                  </label>
-                </div>
-
-                <label className="contact-form__field">
-                  <span>
-                    <Tag aria-hidden="true" />
-                    Asunto
-                  </span>
-                  <input
-                    autoComplete="off"
-                    name="subject"
-                    placeholder="Sitio web, SEO, consultoría..."
-                    type="text"
-                  />
-                </label>
-
-                <label className="contact-form__field contact-form__field--message">
-                  <span>
-                    <MessageCircle aria-hidden="true" />
-                    Cuéntame sobre tu proyecto
-                  </span>
-                  <textarea
-                    name="message"
-                    placeholder="Escribe los detalles de tu idea, objetivos y cualquier información que consideres importante."
-                    rows={7}
-                  />
-                </label>
-
-                <button className="contact-form__button" type="button">
-                  <Send aria-hidden="true" />
-                  Enviar mensaje
-                </button>
-
-                <p className="contact-form__privacy" id="contact-form-privacy">
-                  <LockKeyhole aria-hidden="true" />
-                  No compartimos tu información con terceros.
-                </p>
-              </form>
+              <ContactWhatsappForm />
             </section>
           </div>
         </section>
