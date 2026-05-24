@@ -1821,6 +1821,11 @@ a {
   font-weight: 800;
   text-transform: uppercase;
 }
+.about-hero__image-placeholder img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .about-hero__badge {
   position: absolute;

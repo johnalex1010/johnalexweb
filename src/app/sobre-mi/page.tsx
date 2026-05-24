@@ -26,9 +26,9 @@ const pageDescription =
   "Conoce a John Alex, desarrollador web especializado en sitios modernos, WordPress, SEO, consultoría web, Next.js, Vercel y soluciones digitales orientadas a resultados.";
 
 const stats = [
-  { label: "Años de experiencia", value: "5+", icon: BriefcaseBusiness },
-  { label: "Proyectos completados", value: "120+", icon: CodeXml },
-  { label: "Clientes satisfechos", value: "98%", icon: Smile },
+  { label: "Años de experiencia", value: "10+", icon: BriefcaseBusiness },
+  { label: "Proyectos completados", value: "50+", icon: CodeXml },
+  { label: "Clientes satisfechos", value: "90%", icon: Smile },
   { label: "Soporte y acompañamiento", value: "24/7", icon: Rocket },
 ];
 
@@ -37,7 +37,7 @@ const skills = [
   { label: "Desarrollo backend", value: "90%", modifier: "backend" },
   { label: "Diseño UI/UX", value: "85%", modifier: "design" },
   { label: "Optimización SEO", value: "90%", modifier: "seo" },
-  { label: "Gestión de proyectos", value: "88%", modifier: "projects" },
+  { label: "Gestión de proyectos", value: "92%", modifier: "projects" },
 ];
 
 const workflow = [
@@ -123,7 +123,7 @@ export default function AboutPage() {
                 <span>soluciones digitales</span>
               </h1>
               <p className="about-hero__description">
-                Soy un desarrollador web con más de 5 años de experiencia ayudando
+                Soy un desarrollador web con más de 10 años de experiencia ayudando
                 a empresas y emprendedores a transformar sus ideas en sitios web
                 claros, rápidos y orientados a resultados.
               </p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
 
             <div className="about-hero__visual" aria-label="Espacio reservado para imagen personal">
               <div className="about-hero__image-placeholder">
-                <span>Imagen personal</span>
+                <img src="/images/john-alex.webp" alt="John Alex" />
               </div>
               <div className="about-hero__badge">
                 <BadgeCheck aria-hidden="true" />
