@@ -38,11 +38,11 @@ const benefits = [
 ];
 
 const contactItems = [
-  { label: "Email", value: "hola@johnalexweb.com", icon: Mail },
-  { label: "Teléfono", value: "+57 300 123 4567", icon: Phone },
+  // { label: "Email", value: "hola@johnalexweb.com", icon: Mail }, 
+  // { label: "Teléfono", value: "+57 300 123 4567", icon: Phone },
   { label: "WhatsApp", value: "+57 321 454 8919", icon: MessageCircle },
   { label: "Ubicación", value: "Colombia", icon: MapPin },
-  { label: "Horario", value: "Lun - Vie: 9:00 AM - 6:00 PM", icon: Clock },
+  { label: "Horario", value: "Lun - Vie: 9:00 AM - 5:00 PM", icon: Clock },
 ];
 
 export const metadata: Metadata = {

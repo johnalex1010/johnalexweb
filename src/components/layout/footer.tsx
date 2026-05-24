@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Braces,
   BriefcaseBusiness,
-  Camera,
   CodeXml,
   Database,
   Mail,
@@ -21,12 +20,7 @@ const footerNavigation = [
   { label: "Contacto", href: "/contacto" },
 ];
 
-const footerServices = [
-  { label: "Sitios web corporativos", href: "/#servicios" },
-  { label: "Aplicaciones web a medida", href: "/#servicios" },
-  { label: "Optimización y mantenimiento", href: "/#servicios" },
-  { label: "Consultoría web y SEO", href: "/contacto" },
-];
+
 
 const footerTechnologies = [
   { label: "HTML5", icon: CodeXml },
@@ -36,13 +30,12 @@ const footerTechnologies = [
   { label: "MySQL", icon: Database },
   { label: "React", icon: CodeXml },
   { label: "Next.js", icon: Monitor },
-  { label: "SEO técnico", icon: SearchCheck },
+  { label: "SEO / AEO / GEO", icon: SearchCheck },
 ];
 
 const socialItems = [
-  { label: "GitHub", icon: CodeXml },
-  { label: "LinkedIn", icon: BriefcaseBusiness },
-  { label: "Instagram", icon: Camera },
+  { label: "GitHub", icon: CodeXml, href: "https://github.com/johnalex1010" },
+  { label: "LinkedIn", icon: BriefcaseBusiness, href: "https://www.linkedin.com/in/johnalex1010/" },
 ];
 
 export function Footer() {
@@ -97,7 +90,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav className="site-footer__column" aria-label="Servicios principales">
+          {/* <nav className="site-footer__column" aria-label="Servicios principales">
             <h3>Servicios</h3>
             <ul>
               {footerServices.map((item) => (
@@ -106,7 +99,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </nav>
+          </nav> */}
 
           <div className="site-footer__column">
             <h3>Tecnologías</h3>
@@ -126,19 +119,21 @@ export function Footer() {
 
           <div className="site-footer__column site-footer__social-column">
             <h3>Sígueme</h3>
-            <div className="site-footer__social-list" aria-label="Redes sociales pendientes">
+            <div className="site-footer__social-list" aria-label="Redes sociales">
               {socialItems.map((item) => {
                 const Icon = item.icon;
 
                 return (
-                  <span
+                  <a
                     className="site-footer__social-item"
-                    aria-label={`${item.label} pendiente de configurar`}
-                    key={item.label}
-                    role="img"
+                    href={item.href}
+                    aria-label={`Visitar ${item.label} de John Alex`}
+                    key={item.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     <Icon aria-hidden="true" />
-                  </span>
+                  </a>
                 );
               })}
             </div>
