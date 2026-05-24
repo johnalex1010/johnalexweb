@@ -1,8 +1,8 @@
 export const faqs = [
   {
-    question: "¿Qué servicios ofrece JohnAlexWeb?",
+    question: "¿Qué servicios ofrece JohnAlex?",
     answer:
-      "JohnAlexWeb ofrece desarrollo de sitios web corporativos, aplicaciones web a medida, optimización y mantenimiento web, SEO técnico y consultoría web.",
+      "JohnAlex ofrece desarrollo de sitios web corporativos, aplicaciones web a medida, optimización y mantenimiento web, SEO técnico y consultoría web.",
   },
   {
     question: "¿Puedo solicitar una web optimizada para SEO, AEO y GEO?",
