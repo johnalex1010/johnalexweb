@@ -36,10 +36,10 @@ export function HeroSection() {
             <a className="button button--primary" href="/contacto">
               Quiero mi sitio web
             </a>
-            <a className="button button--secondary" href="#proyectos">
+            {/* <a className="button button--secondary" href="#proyectos">
               Ver proyectos
               <span aria-hidden="true">→</span>
-            </a>
+            </a> */}
           </div>
 
           <ul className="hero-section__benefits" aria-label="Beneficios principales">
