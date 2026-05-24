@@ -26,7 +26,7 @@ import { Header } from "@/components/layout/header";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getProjectBySlug, imageRecommendations, projects } from "@/data/projects";
 import { createBreadcrumbSchema } from "@/lib/seo";
-import { absoluteUrl, siteName } from "@/lib/site";
+import { absoluteUrl, openGraphImage, siteName } from "@/lib/site";
 
 type ProjectDetailPageProps = {
   params: Promise<{
@@ -116,13 +116,15 @@ export async function generateMetadata({
       description: project.summary,
       url: absoluteUrl(`/proyectos/${project.slug}`),
       siteName,
+      images: [openGraphImage],
       locale: "es_CO",
       type: "article",
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${project.title} | ${siteName}`,
       description: project.summary,
+      images: [openGraphImage.url],
     },
   };
 }

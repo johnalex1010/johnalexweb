@@ -3,7 +3,14 @@ import localFont from "next/font/local";
 import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/seo/json-ld";
 import { professionalServiceSchema, websiteSchema } from "@/lib/seo";
-import { absoluteUrl, defaultDescription, siteKeywords, siteName, siteUrl } from "@/lib/site";
+import {
+  absoluteUrl,
+  defaultDescription,
+  openGraphImage,
+  siteKeywords,
+  siteName,
+  siteUrl,
+} from "@/lib/site";
 import "./globals.css";
 
 const metropolis = localFont({
@@ -44,13 +51,15 @@ export const metadata: Metadata = {
     description: defaultDescription,
     url: absoluteUrl("/"),
     siteName,
+    images: [openGraphImage],
     locale: "es_CO",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "JohnAlexWeb | Desarrollo web, SEO y consultoría digital",
     description: defaultDescription,
+    images: [openGraphImage.url],
   },
   icons: {
     icon: "/favicon.ico",

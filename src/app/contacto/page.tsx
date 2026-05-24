@@ -13,7 +13,7 @@ import { ContactWhatsappForm } from "@/components/contact/contact-whatsapp-form"
 import { Header } from "@/components/layout/header";
 import { JsonLd } from "@/components/seo/json-ld";
 import { createBreadcrumbSchema } from "@/lib/seo";
-import { absoluteUrl, siteName } from "@/lib/site";
+import { absoluteUrl, openGraphImage, siteName } from "@/lib/site";
 
 const pageTitle = "Contacto";
 const pageDescription =
@@ -56,13 +56,15 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: absoluteUrl("/contacto"),
     siteName,
+    images: [openGraphImage],
     locale: "es_CO",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${pageTitle} | ${siteName}`,
     description: pageDescription,
+    images: [openGraphImage.url],
   },
 };
 

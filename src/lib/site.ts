@@ -22,6 +22,13 @@ export function absoluteUrl(path = "/") {
   return `${siteUrl}${normalizedPath}`;
 }
 
+export const openGraphImage = {
+  url: "/images/og-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "JohnAlexWeb - Desarrollo web, SEO y consultoria digital",
+};
+
 export const siteKeywords = [
   "desarrollo web",
   "sitios web corporativos",

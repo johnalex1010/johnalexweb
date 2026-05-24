@@ -19,7 +19,7 @@ import {
 import { Header } from "@/components/layout/header";
 import { JsonLd } from "@/components/seo/json-ld";
 import { createBreadcrumbSchema, createWebPageSchema, personSchema } from "@/lib/seo";
-import { absoluteUrl, siteName } from "@/lib/site";
+import { absoluteUrl, openGraphImage, siteName } from "@/lib/site";
 
 const pageTitle = "Sobre mí";
 const pageDescription =
@@ -85,13 +85,15 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: absoluteUrl("/sobre-mi"),
     siteName,
+    images: [openGraphImage],
     locale: "es_CO",
     type: "profile",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${pageTitle} | ${siteName}`,
     description: pageDescription,
+    images: [openGraphImage.url],
   },
 };
 

@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { ProjectCard } from "@/components/projects/project-card";
 import { projects } from "@/data/projects";
 import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
-import { absoluteUrl, siteName } from "@/lib/site";
+import { absoluteUrl, openGraphImage, siteName } from "@/lib/site";
 
 const pageTitle = "Proyectos web";
 const pageDescription =
@@ -21,13 +21,15 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: absoluteUrl("/proyectos"),
     siteName,
+    images: [openGraphImage],
     locale: "es_CO",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${pageTitle} | ${siteName}`,
     description: pageDescription,
+    images: [openGraphImage.url],
   },
 };
 
