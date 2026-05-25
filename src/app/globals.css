@@ -1719,7 +1719,7 @@ a {
 .about-page__eyebrow {
   margin: 0 0 12px;
   color: var(--color-secondary);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -1755,7 +1755,7 @@ a {
 }
 
 .about-hero {
-  padding: 144px 20px 42px;
+  padding: 148px 20px 96px;
 }
 
 .about-hero__grid {
