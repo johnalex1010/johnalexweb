@@ -15,7 +15,7 @@ export default function Home() {
         data={[
           createWebPageSchema({
             path: "/",
-            name: "JohnAlexWeb | Desarrollo web, SEO y consultoría digital",
+            name: "JohnAlex | Desarrollo web, SEO y consultoría digital",
             description:
               "Desarrollo sitios web modernos, rápidos y optimizados para convertir visitantes en clientes.",
           }),
