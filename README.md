@@ -282,6 +282,35 @@ AGENTS.md
 
 Antes de implementar cambios funcionales se debe definir una SPEC proporcional al alcance.
 
+## Calidad de Código
+
+La calidad esperada del proyecto sigue el principio de código limpio: el código debe ser fácil de leer, mantener, reutilizar y escalar sin aumentar complejidad innecesaria.
+
+Buenas prácticas obligatorias:
+
+- Usar nombres descriptivos para variables, funciones, componentes, tipos, props y archivos.
+- Mantener funciones y componentes pequeños, con responsabilidad única.
+- Evitar abreviaturas ambiguas, nombres genéricos y lógica difícil de entender.
+- Mantener formato consistente con ESLint, TypeScript estricto y patrones existentes.
+- Centralizar contenido editable o reutilizable en `src/data`.
+- Crear utilidades en `src/lib` solo cuando exista reutilización real.
+- Eliminar imports no usados, código muerto, duplicación, logs y debugging antes de finalizar.
+- Usar comentarios solo cuando aporten contexto que el código no expresa por sí mismo.
+- Manejar errores, estados vacíos y datos inesperados cuando el flujo lo requiera.
+- Mantener la arquitectura simple, modular y preparada para crecer sin sobreingeniería.
+
+Se debe evitar código sucio como funciones enormes, componentes con responsabilidades mezcladas, nombres crípticos, comentarios redundantes, archivos desordenados, lógica duplicada o manejo de errores inexistente.
+
+## Flujo de Desarrollo
+
+1. Revisar `AGENTS.md` y el alcance del cambio.
+2. Definir SPEC breve o completa según el riesgo.
+3. Identificar archivos fuente afectados y validar impacto en SEO / GEO / AEO, accesibilidad, performance y seguridad.
+4. Implementar cambios mínimos, legibles y reversibles.
+5. Ejecutar `npm run lint` y `npm run build` cuando el alcance lo requiera.
+6. Validar responsive y errores visibles en navegador cuando el cambio afecte UI.
+7. Documentar archivos modificados, validación, riesgos, estado del README y rollback.
+
 ## Validación Actual
 
 Últimas validaciones realizadas:
