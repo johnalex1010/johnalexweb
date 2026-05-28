@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BadgeCheck,
@@ -139,7 +140,13 @@ export default function AboutPage() {
 
             <div className="about-hero__visual" aria-label="Espacio reservado para imagen personal">
               <div className="about-hero__image-placeholder">
-                <img src="/images/john-alex.webp" alt="John Alex" />
+                <Image
+                  src="/images/john-alex.webp"
+                  alt="John Alex, desarrollador web"
+                  width={800}
+                  height={600}
+                  priority
+                />
               </div>
               <div className="about-hero__badge">
                 <BadgeCheck aria-hidden="true" />

@@ -36,38 +36,35 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
     const sectionIds = navigationItems.map((item) => item.sectionId);
     let animationFrame = 0;
 
-    const updateActiveSection = () => {
-      const activationPoint = window.scrollY + window.innerHeight * 0.35;
-      const currentSection =
+    const update = () => {
+      const scrollY = window.scrollY;
+      const activationPoint = scrollY + window.innerHeight * 0.35;
+      const section =
         sectionIds
-          .map((sectionId) => document.getElementById(sectionId))
-          .filter((section): section is HTMLElement => Boolean(section))
-          .filter((section) => section.offsetTop <= activationPoint)
+          .map((id) => document.getElementById(id))
+          .filter((el): el is HTMLElement => Boolean(el))
+          .filter((el) => el.offsetTop <= activationPoint)
           .at(-1)?.id ?? "inicio";
 
-      setActiveSection(currentSection);
+      setIsScrolled(scrollY > 24);
+      setActiveSection(section);
     };
 
-    const handleScroll = () => {
+    const handleEvent = () => {
       window.cancelAnimationFrame(animationFrame);
-      animationFrame = window.requestAnimationFrame(updateActiveSection);
+      animationFrame = window.requestAnimationFrame(update);
     };
 
-    const updateHeaderState = () => {
-      setIsScrolled(window.scrollY > 24);
-      handleScroll();
-    };
-
-    updateHeaderState();
-    window.addEventListener("scroll", updateHeaderState, { passive: true });
-    window.addEventListener("resize", updateHeaderState);
-    window.addEventListener("hashchange", updateHeaderState);
+    handleEvent();
+    window.addEventListener("scroll", handleEvent, { passive: true });
+    window.addEventListener("resize", handleEvent, { passive: true });
+    window.addEventListener("hashchange", handleEvent);
 
     return () => {
       window.cancelAnimationFrame(animationFrame);
-      window.removeEventListener("scroll", updateHeaderState);
-      window.removeEventListener("resize", updateHeaderState);
-      window.removeEventListener("hashchange", updateHeaderState);
+      window.removeEventListener("scroll", handleEvent);
+      window.removeEventListener("resize", handleEvent);
+      window.removeEventListener("hashchange", handleEvent);
     };
   }, [pathname]);
 

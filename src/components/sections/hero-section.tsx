@@ -1,5 +1,154 @@
 import Link from "next/link";
 
+type TokenType = "punctuation" | "tag" | "attr" | "string" | "text" | "doctype";
+type Token = { type: TokenType; value: string } | { type: "raw"; value: string };
+type CodeLine = { indent?: number; tokens: Token[] };
+
+const codeLines: CodeLine[] = [
+  {
+    tokens: [
+      { type: "punctuation", value: "<!" },
+      { type: "doctype", value: "DOCTYPE" },
+      { type: "raw", value: " html" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "html" },
+      { type: "raw", value: " " },
+      { type: "attr", value: "lang" },
+      { type: "punctuation", value: "=" },
+      { type: "string", value: '"es"' },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "head" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 2,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "title" },
+      { type: "punctuation", value: ">" },
+      { type: "text", value: "Tu negocio" },
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "title" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "head" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "body" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 2,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "header" },
+      { type: "raw", value: " " },
+      { type: "attr", value: "class" },
+      { type: "punctuation", value: "=" },
+      { type: "string", value: '"hero"' },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 3,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "h1" },
+      { type: "punctuation", value: ">" },
+      { type: "text", value: "Soluciones digitales" },
+    ],
+  },
+  {
+    indent: 4,
+    tokens: [
+      { type: "text", value: "que venden mejor" },
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "h1" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 3,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "p" },
+      { type: "punctuation", value: ">" },
+      { type: "text", value: "Desarrollo web moderno," },
+    ],
+  },
+  {
+    indent: 4,
+    tokens: [
+      { type: "text", value: "rápido y optimizado." },
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "p" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 3,
+    tokens: [
+      { type: "punctuation", value: "<" },
+      { type: "tag", value: "a" },
+      { type: "raw", value: " " },
+      { type: "attr", value: "href" },
+      { type: "punctuation", value: "=" },
+      { type: "string", value: '"/contacto"' },
+      { type: "punctuation", value: ">" },
+      { type: "text", value: "Hablemos" },
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "a" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 2,
+    tokens: [
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "header" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "body" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+  {
+    tokens: [
+      { type: "punctuation", value: "</" },
+      { type: "tag", value: "html" },
+      { type: "punctuation", value: ">" },
+    ],
+  },
+];
+
 const heroBenefits = [
   {
     title: "Diseño moderno",
@@ -65,102 +214,30 @@ export function HeroSection() {
             <div className="hero-visual__workspace">
               <pre className="hero-visual__code" aria-hidden="true">
                 <code>
-                  <span className="hero-visual__code-line">
-                    <span className="code-token code-token--punctuation">&lt;!</span>
-                    <span className="code-token code-token--doctype">DOCTYPE</span> html
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">html</span>{" "}
-                    <span className="code-token code-token--attr">lang</span>
-                    <span className="code-token code-token--punctuation">=</span>
-                    <span className="code-token code-token--string">&quot;es&quot;</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">head</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-2">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">title</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                    <span className="code-token code-token--text">Tu negocio</span>
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">title</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">head</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">body</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-2">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">header</span>{" "}
-                    <span className="code-token code-token--attr">class</span>
-                    <span className="code-token code-token--punctuation">=</span>
-                    <span className="code-token code-token--string">&quot;hero&quot;</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-3">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">h1</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                    <span className="code-token code-token--text">Soluciones digitales</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-4">
-                    <span className="code-token code-token--text">que venden mejor</span>
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">h1</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-3">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">p</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                    <span className="code-token code-token--text">Desarrollo web moderno,</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-4">
-                    <span className="code-token code-token--text">rápido y optimizado.</span>
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">p</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-3">
-                    <span className="code-token code-token--punctuation">&lt;</span>
-                    <span className="code-token code-token--tag">a</span>{" "}
-                    <span className="code-token code-token--attr">href</span>
-                    <span className="code-token code-token--punctuation">=</span>
-                    <span className="code-token code-token--string">&quot;/contacto&quot;</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                    <span className="code-token code-token--text">Hablemos</span>
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">a</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-2">
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">header</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line hero-visual__code-line--indent-1">
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">body</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
-                  <span className="hero-visual__code-line">
-                    <span className="code-token code-token--punctuation">&lt;/</span>
-                    <span className="code-token code-token--tag">html</span>
-                    <span className="code-token code-token--punctuation">&gt;</span>
-                  </span>
+                  {codeLines.map((line, lineIndex) => (
+                    <span
+                      key={lineIndex}
+                      className={[
+                        "hero-visual__code-line",
+                        line.indent ? `hero-visual__code-line--indent-${line.indent}` : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                    >
+                      {line.tokens.map((token, tokenIndex) =>
+                        token.type === "raw" ? (
+                          token.value
+                        ) : (
+                          <span
+                            key={tokenIndex}
+                            className={`code-token code-token--${token.type}`}
+                          >
+                            {token.value}
+                          </span>
+                        ),
+                      )}
+                    </span>
+                  ))}
                 </code>
               </pre>
 
@@ -177,7 +254,7 @@ export function HeroSection() {
           <div className="hero-visual__badge">
             <span aria-hidden="true">✓</span>
             <div>
-              <strong>Codigo limpio</strong>
+              <strong>Código limpio</strong>
               <p>Calidad y escalabilidad</p>
             </div>
           </div>
