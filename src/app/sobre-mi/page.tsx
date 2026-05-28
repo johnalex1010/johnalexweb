@@ -134,10 +134,6 @@ export default function AboutPage() {
                   Hablemos de tu proyecto
                   <MessageCircle aria-hidden="true" />
                 </Link>
-                {/* <Link className="about-page__button about-page__button--secondary" href="/proyectos">
-                  Ver proyectos
-                  <CodeXml aria-hidden="true" />
-                </Link> */}
               </div>
             </div>
 

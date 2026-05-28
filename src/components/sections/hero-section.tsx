@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 const heroBenefits = [
   {
-    title: "Diseno moderno",
+    title: "Diseño moderno",
     description: "Interfaces atractivas, claras y funcionales.",
   },
   {
-    title: "Rendimiento rapido",
+    title: "Rendimiento rápido",
     description: "Sitios optimizados para velocidad y SEO.",
   },
   {
@@ -28,18 +30,14 @@ export function HeroSection() {
           </h1>
 
           <p className="hero-section__description">
-            Creo sitios web modernos, rapidos y escalables que convierten visitantes en
+            Creo sitios web modernos, rápidos y escalables que convierten visitantes en
             clientes.
           </p>
 
           <div className="hero-section__actions" aria-label="Acciones principales">
-            <a className="button button--primary" href="/contacto">
+            <Link className="button button--primary" href="/contacto">
               Quiero mi sitio web
-            </a>
-            {/* <a className="button button--secondary" href="#proyectos">
-              Ver proyectos
-              <span aria-hidden="true">→</span>
-            </a> */}
+            </Link>
           </div>
 
           <ul className="hero-section__benefits" aria-label="Beneficios principales">
@@ -131,7 +129,7 @@ export function HeroSection() {
                     <span className="code-token code-token--text">Desarrollo web moderno,</span>
                   </span>
                   <span className="hero-visual__code-line hero-visual__code-line--indent-4">
-                    <span className="code-token code-token--text">rapido y optimizado.</span>
+                    <span className="code-token code-token--text">rápido y optimizado.</span>
                     <span className="code-token code-token--punctuation">&lt;/</span>
                     <span className="code-token code-token--tag">p</span>
                     <span className="code-token code-token--punctuation">&gt;</span>

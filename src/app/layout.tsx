@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/seo/json-ld";
-import { professionalServiceSchema, websiteSchema } from "@/lib/seo";
+import { personSchema, professionalServiceSchema, websiteSchema } from "@/lib/seo";
 import {
   absoluteUrl,
   defaultDescription,
@@ -111,7 +111,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-MDMTRB6');
           `}
         </Script>
-        <JsonLd data={[websiteSchema, professionalServiceSchema]} />
+        <JsonLd data={[websiteSchema, personSchema, professionalServiceSchema]} />
         {children}
         <Footer />
       </body>

@@ -3,7 +3,6 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { FaqSection } from "@/components/sections/faq-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProcessSection } from "@/components/sections/process-section";
-import { ProjectsSection } from "@/components/sections/projects-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { faqs } from "@/data/faqs";
 import { createFaqSchema, createWebPageSchema } from "@/lib/seo";
@@ -26,7 +25,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <ServicesSection />
-        {/* <ProjectsSection /> */}
         <ProcessSection />
         <FaqSection />
       </main>
