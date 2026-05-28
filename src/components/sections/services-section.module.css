@@ -1,0 +1,253 @@
+.section {
+  padding: 108px 20px 92px;
+  background: var(--color-tertiary);
+  color: var(--color-text);
+}
+
+.container {
+  width: min(100%, var(--container-width));
+  margin: 0 auto;
+}
+
+.heading {
+  max-width: 880px;
+  margin: 0 auto 46px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.title span {
+  color: var(--color-secondary);
+}
+
+.description {
+  max-width: 720px;
+  margin: 20px auto 0;
+  color: rgba(38, 50, 56, 0.74);
+  font-size: 1.12rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 320px));
+  justify-content: center;
+  gap: 26px;
+}
+
+/* ── Service Card ── */
+
+.card {
+  position: relative;
+  min-height: 500px;
+  padding: 48px 26px 30px;
+  border: 1px solid rgba(11, 37, 91, 0.1);
+  border-radius: 8px;
+  background: var(--color-white);
+  box-shadow: 0 18px 50px rgba(11, 37, 91, 0.08);
+}
+
+.cardBar {
+  position: absolute;
+  top: 24px;
+  left: 26px;
+  width: 58px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+}
+
+.cardBlue .cardBar {
+  background: var(--color-primary);
+}
+
+.cardIcon {
+  display: inline-flex;
+  width: 78px;
+  height: 78px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  border-radius: 8px;
+  background: rgba(6, 170, 240, 0.1);
+  color: var(--color-secondary);
+}
+
+.cardBlue .cardIcon {
+  background: rgba(11, 37, 91, 0.08);
+  color: var(--color-primary);
+}
+
+.cardIconSvg {
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.8;
+}
+
+.cardTitle {
+  max-width: 290px;
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.cardDescription {
+  min-height: 116px;
+  margin: 18px 0 0;
+  color: rgba(38, 50, 56, 0.72);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.cardFeatures {
+  display: grid;
+  gap: 14px;
+  margin: 26px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(11, 37, 91, 0.1);
+  list-style: none;
+}
+
+.cardFeature {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px;
+  color: rgba(38, 50, 56, 0.82);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.cardFeatureIcon {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--color-secondary);
+  fill: var(--color-secondary);
+  stroke: var(--color-white);
+  stroke-width: 3;
+}
+
+.cardBlue .cardFeatureIcon {
+  color: var(--color-primary);
+  fill: var(--color-primary);
+}
+
+/* ── CTA Banner ── */
+
+.cta {
+  display: grid;
+  width: min(100%, 620px);
+  min-height: 92px;
+  margin: 36px auto 0;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 26px;
+  border: 1px solid rgba(11, 37, 91, 0.1);
+  border-radius: 18px;
+  background: var(--color-white);
+  box-shadow: 0 18px 50px rgba(11, 37, 91, 0.08);
+}
+
+.ctaIcon {
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(6, 170, 240, 0.12);
+  color: var(--color-secondary);
+}
+
+.ctaIconSvg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.9;
+}
+
+.cta strong,
+.cta small {
+  display: block;
+}
+
+.cta strong {
+  color: var(--color-ink);
+  font-size: 1.08rem;
+}
+
+.cta small {
+  margin-top: 6px;
+  color: rgba(38, 50, 56, 0.72);
+  font-size: 0.98rem;
+}
+
+.ctaArrow {
+  color: var(--color-btn);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* ── Responsive ── */
+
+@media screen and (max-width: 1250px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 310px));
+    gap: 18px;
+  }
+  .card { padding: 46px 22px 28px; }
+}
+
+@media screen and (max-width: 1050px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+  .card { min-height: 470px; }
+}
+
+@media screen and (max-width: 850px) {
+  .section { padding: 86px 20px; }
+  .heading { margin-bottom: 38px; text-align: left; }
+  .description { margin-left: 0; }
+  .grid { grid-template-columns: 1fr; }
+  .card { min-height: auto; }
+  .cardDescription { min-height: auto; }
+  .cta { width: 100%; margin-top: 26px; }
+}
+
+@media screen and (max-width: 650px) {
+  .section { padding: 72px 14px; }
+  .title { font-size: 2rem; }
+  .description { font-size: 1rem; }
+  .card { padding: 24px; }
+  .cardBar { top: 20px; left: 24px; }
+  .cardIcon { margin-top: 24px; }
+  .cta {
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+  .ctaArrow { display: none; }
+}

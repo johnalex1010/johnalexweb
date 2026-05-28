@@ -2,6 +2,7 @@ import { CheckCircle2, Code2, Gauge, Monitor, Rocket } from "lucide-react";
 import Link from "next/link";
 import type { ComponentType } from "react";
 import { services, type ServiceIcon } from "@/data/services";
+import styles from "./services-section.module.css";
 
 const serviceIcons: Record<ServiceIcon, ComponentType<{ className?: string }>> = {
   website: Monitor,
@@ -9,40 +10,44 @@ const serviceIcons: Record<ServiceIcon, ComponentType<{ className?: string }>> =
   optimization: Gauge,
 };
 
+const accentClassMap: Record<string, string> = {
+  blue: styles.cardBlue,
+};
+
 export function ServicesSection() {
   return (
-    <section className="services-section" id="servicios" aria-labelledby="services-title">
-      <div className="services-section__container">
-        <div className="services-section__heading">
-          <p className="services-section__eyebrow">Servicios</p>
-          <h2 className="services-section__title" id="services-title">
+    <section className={styles.section} id="servicios" aria-labelledby="services-title">
+      <div className={styles.container}>
+        <div className={styles.heading}>
+          <p className={styles.eyebrow}>Servicios</p>
+          <h2 className={styles.title} id="services-title">
             ¿Qué puedo hacer por <span>tu negocio?</span>
           </h2>
-          <p className="services-section__description">
+          <p className={styles.description}>
             Soluciones completas para tener presencia en línea y destacar frente a tu
             competencia.
           </p>
         </div>
 
-        <div className="services-section__grid">
+        <div className={styles.grid}>
           {services.map((service) => {
             const Icon = serviceIcons[service.icon];
+            const cardClass = [styles.card, accentClassMap[service.accent] ?? ""]
+              .filter(Boolean)
+              .join(" ");
 
             return (
-              <article
-                className={`service-card service-card--${service.accent}`}
-                key={service.title}
-              >
-                <span className="service-card__bar" aria-hidden="true" />
-                <span className="service-card__icon" aria-hidden="true">
-                  <Icon className="service-card__icon-svg" />
+              <article className={cardClass} key={service.title}>
+                <span className={styles.cardBar} aria-hidden="true" />
+                <span className={styles.cardIcon} aria-hidden="true">
+                  <Icon className={styles.cardIconSvg} />
                 </span>
-                <h3 className="service-card__title">{service.title}</h3>
-                <p className="service-card__description">{service.description}</p>
-                <ul className="service-card__features">
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.cardDescription}>{service.description}</p>
+                <ul className={styles.cardFeatures}>
                   {service.features.map((feature) => (
-                    <li className="service-card__feature" key={feature}>
-                      <CheckCircle2 className="service-card__feature-icon" aria-hidden="true" />
+                    <li className={styles.cardFeature} key={feature}>
+                      <CheckCircle2 className={styles.cardFeatureIcon} aria-hidden="true" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -52,15 +57,15 @@ export function ServicesSection() {
           })}
         </div>
 
-        <Link className="services-section__cta" href="/contacto">
-          <span className="services-section__cta-icon" aria-hidden="true">
-            <Rocket className="services-section__cta-icon-svg" />
+        <Link className={styles.cta} href="/contacto">
+          <span className={styles.ctaIcon} aria-hidden="true">
+            <Rocket className={styles.ctaIconSvg} />
           </span>
           <span>
             <strong>¿Tienes una idea en mente?</strong>
             <small>Hablemos y la llevamos al siguiente nivel.</small>
           </span>
-          <span className="services-section__cta-arrow" aria-hidden="true">
+          <span className={styles.ctaArrow} aria-hidden="true">
             &rarr;
           </span>
         </Link>

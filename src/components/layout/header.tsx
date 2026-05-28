@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import styles from "./header.module.css";
 
 const navigationItems = [
   { label: "Inicio", href: "/#inicio", sectionId: "inicio" },
@@ -68,52 +69,54 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
     };
   }, [pathname]);
 
+  const headerClass = [
+    styles.header,
+    isScrolled ? styles.scrolled : "",
+    variant === "light" ? styles.light : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const navLinkClass = (sectionId: string) =>
+    [styles.navLink, currentSection === sectionId ? styles.active : ""]
+      .filter(Boolean)
+      .join(" ");
+
   return (
-    <header
-      className={`site-header${isScrolled ? " is-scrolled" : ""}${
-        variant === "light" ? " site-header--light" : ""
-      }`}
-      aria-label="Encabezado principal"
-    >
-      <Link className="site-header__brand" href="/#inicio" aria-label="John Alex inicio">
-        <span className="site-header__brand-name">
-          <span className="site-header__brand-primary">john</span>
-          <span className="site-header__brand-secondary">alex</span>
-          <span className="site-header__brand-dot">.</span>
+    <header className={headerClass} aria-label="Encabezado principal">
+      <Link className={styles.brand} href="/#inicio" aria-label="John Alex inicio">
+        <span className={styles.brandName}>
+          <span className={styles.brandPrimary}>john</span>
+          <span className={styles.brandSecondary}>alex</span>
+          <span className={styles.brandDot}>.</span>
         </span>
       </Link>
 
       <nav
-        className="site-header__nav site-header__nav--desktop"
+        className={`${styles.nav} ${styles.navDesktop}`}
         aria-label="Navegacion principal"
       >
         {navigationItems.map((item) => (
           <Link
-            aria-current={
-              currentSection === item.sectionId ? "page" : undefined
-            }
-            className={`site-header__nav-link${
-              currentSection === item.sectionId ? " is-active" : ""
-            }`}
+            aria-current={currentSection === item.sectionId ? "page" : undefined}
+            className={navLinkClass(item.sectionId)}
             href={item.href}
             key={item.href}
-            onClick={() => {
-              setActiveSection(item.sectionId);
-            }}
+            onClick={() => setActiveSection(item.sectionId)}
           >
             {item.label}
           </Link>
         ))}
       </nav>
 
-      <Link className="site-header__cta" href="/contacto">
+      <Link className={styles.cta} href="/contacto">
         Hablemos
         <span aria-hidden="true">&rarr;</span>
       </Link>
 
-      <details className="site-header__mobile-menu">
+      <details className={styles.mobileMenu}>
         <summary
-          className="site-header__menu-button"
+          className={styles.menuButton}
           aria-label="Abrir menu"
           aria-controls="site-header-mobile-menu"
         >
@@ -123,21 +126,17 @@ export function Header({ variant = "default" }: { variant?: "default" | "light" 
         </summary>
 
         <nav
-          className="site-header__nav site-header__mobile-nav"
+          className={`${styles.nav} ${styles.mobileNav}`}
           id="site-header-mobile-menu"
           aria-label="Navegacion principal movil"
         >
           {navigationItems.map((item) => (
             <Link
               aria-current={currentSection === item.sectionId ? "page" : undefined}
-              className={`site-header__nav-link${
-                currentSection === item.sectionId ? " is-active" : ""
-              }`}
+              className={navLinkClass(item.sectionId)}
               href={item.href}
               key={item.href}
-              onClick={() => {
-                setActiveSection(item.sectionId);
-              }}
+              onClick={() => setActiveSection(item.sectionId)}
             >
               {item.label}
             </Link>

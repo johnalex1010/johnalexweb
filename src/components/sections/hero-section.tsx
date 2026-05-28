@@ -1,8 +1,25 @@
 import Link from "next/link";
+import styles from "./hero-section.module.css";
 
 type TokenType = "punctuation" | "tag" | "attr" | "string" | "text" | "doctype";
 type Token = { type: TokenType; value: string } | { type: "raw"; value: string };
 type CodeLine = { indent?: number; tokens: Token[] };
+
+const tokenClassMap: Record<TokenType, string> = {
+  punctuation: styles.tokenPunctuation,
+  tag: styles.tokenTag,
+  attr: styles.tokenAttr,
+  string: styles.tokenString,
+  text: styles.tokenText,
+  doctype: styles.tokenDoctype,
+};
+
+const indentClassMap: Record<number, string> = {
+  1: styles.codeLineIndent1,
+  2: styles.codeLineIndent2,
+  3: styles.codeLineIndent3,
+  4: styles.codeLineIndent4,
+};
 
 const codeLines: CodeLine[] = [
   {
@@ -166,33 +183,34 @@ const heroBenefits = [
 
 export function HeroSection() {
   return (
-    <section className="hero-section" id="inicio" aria-labelledby="hero-title">
-      <div className="hero-section__content">
-        <div className="hero-section__copy">
-          <p className="hero-section__eyebrow">
+    <section className={styles.section} id="inicio" aria-labelledby="hero-title">
+      <div className={styles.content}>
+        <div className={styles.copy}>
+          <p className={styles.eyebrow}>
             <span aria-hidden="true" />
             Desarrollo web a medida
           </p>
 
-          <h1 className="hero-section__title" id="hero-title">
+          <h1 className={styles.title} id="hero-title">
             Desarrollo web que <span>impulsa tu negocio</span>
           </h1>
 
-          <p className="hero-section__description">
+          <p className={styles.description}>
             Creo sitios web modernos, rápidos y escalables que convierten visitantes en
             clientes.
           </p>
 
-          <div className="hero-section__actions" aria-label="Acciones principales">
-            <Link className="button button--primary" href="/contacto">
+          <div className={styles.actions} aria-label="Acciones principales">
+            <Link className={styles.btn} href="/contacto">
               Quiero mi sitio web
+              <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
 
-          <ul className="hero-section__benefits" aria-label="Beneficios principales">
+          <ul className={styles.benefits} aria-label="Beneficios principales">
             {heroBenefits.map((benefit) => (
-              <li className="hero-section__benefit" key={benefit.title}>
-                <span className="hero-section__benefit-icon" aria-hidden="true">
+              <li className={styles.benefit} key={benefit.title}>
+                <span className={styles.benefitIcon} aria-hidden="true">
                   ✦
                 </span>
                 <strong>{benefit.title}</strong>
@@ -202,24 +220,24 @@ export function HeroSection() {
           </ul>
         </div>
 
-        <div className="hero-visual" aria-label="Vista previa de un proyecto web">
-          <div className="hero-visual__window">
-            <div className="hero-visual__toolbar" aria-hidden="true">
+        <div className={styles.visual} aria-label="Vista previa de un proyecto web">
+          <div className={styles.window}>
+            <div className={styles.toolbar} aria-hidden="true">
               <span />
               <span />
               <span />
               <strong>index.html</strong>
             </div>
 
-            <div className="hero-visual__workspace">
-              <pre className="hero-visual__code" aria-hidden="true">
+            <div className={styles.workspace}>
+              <pre className={styles.code} aria-hidden="true">
                 <code>
                   {codeLines.map((line, lineIndex) => (
                     <span
                       key={lineIndex}
                       className={[
-                        "hero-visual__code-line",
-                        line.indent ? `hero-visual__code-line--indent-${line.indent}` : "",
+                        styles.codeLine,
+                        line.indent ? indentClassMap[line.indent] : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
@@ -228,10 +246,7 @@ export function HeroSection() {
                         token.type === "raw" ? (
                           token.value
                         ) : (
-                          <span
-                            key={tokenIndex}
-                            className={`code-token code-token--${token.type}`}
-                          >
+                          <span key={tokenIndex} className={tokenClassMap[token.type]}>
                             {token.value}
                           </span>
                         ),
@@ -241,9 +256,9 @@ export function HeroSection() {
                 </code>
               </pre>
 
-              <aside className="hero-visual__files" aria-hidden="true">
+              <aside className={styles.files} aria-hidden="true">
                 <strong>Proyecto</strong>
-                <span className="is-active">index.html</span>
+                <span className={styles.filesActive}>index.html</span>
                 <span>styles.css</span>
                 <span>script.js</span>
                 <span>img</span>
@@ -251,7 +266,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="hero-visual__badge">
+          <div className={styles.badge}>
             <span aria-hidden="true">✓</span>
             <div>
               <strong>Código limpio</strong>
